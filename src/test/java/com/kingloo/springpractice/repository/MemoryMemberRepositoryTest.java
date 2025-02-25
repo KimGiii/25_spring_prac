@@ -1,7 +1,6 @@
 package com.kingloo.springpractice.repository;
 
 import com.kingloo.springpractice.domain.Member;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
 
 
 // 여기서 Test 코드를 돌려서 클래스 단위로 테스트도 가능
-public class MemoryMemberRepositoryTest {
+class MemoryMemberRepositoryTest {
 
     MemberRepository repository = new MemoryMemberRepository();
 
@@ -23,19 +22,19 @@ public class MemoryMemberRepositoryTest {
     }
 
     @Test
-    public void save() {
+    void save() {
         Member member = new Member();
         member.setName("spring");
 
         repository.save(member);
 
         Member result = repository.findById(member.getId()).get();
-        // Assertions 에 option + Enter을 쳐서 static으로하면 바로 assertThat 사용 가능
+        // Assertions 에 option + Enter 쳐서 바로 assertThat 사용 가능
         assertThat(member).isEqualTo(result);
     }
 
     @Test
-    public void findByName() {
+    void findByName() {
         Member member1 = new Member();
         member1.setName("spring1");
         repository.save(member1);
@@ -50,7 +49,7 @@ public class MemoryMemberRepositoryTest {
     }
 
     @Test
-    public void findAll() {
+    void findAll() {
         Member member1 = new Member();
         member1.setName("spring1");
         repository.save(member1);
