@@ -14,7 +14,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    // DI(Dependency Injection)
+    // DI(Dependency Injection), 생성자 주입
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
