@@ -13,6 +13,7 @@ public class JdbcMemberRepository implements MemberRepository {
 
     private final DataSource dataSource;
 
+    // Spring을 통해 data를 주입받을 수 있음
     public JdbcMemberRepository(DataSource dataSource) {
         this.dataSource = dataSource;
     }
@@ -29,8 +30,10 @@ public class JdbcMemberRepository implements MemberRepository {
             conn = getConnection();
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
+            // ?의 값과 매칭
             pstmt.setString(1, member.getName());
 
+            // 실제 쿼리가 날라감
             pstmt.executeUpdate();
             rs = pstmt.getGeneratedKeys();
 

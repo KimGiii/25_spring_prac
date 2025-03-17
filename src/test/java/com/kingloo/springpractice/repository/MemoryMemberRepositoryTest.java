@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 // 여기서 Test 코드를 돌려서 클래스 단위로 테스트도 가능
 class MemoryMemberRepositoryTest {
 
-    MemberRepository repository = new MemoryMemberRepository();
+    MemoryMemberRepository repository = new MemoryMemberRepository();
 
     // 테스트는 서로 의존관계가 없이 설계되어야함
     // 그래서 각 메소드의 테스트가 끝날때마다 데이터가 비워지도록 해주는 코드임
