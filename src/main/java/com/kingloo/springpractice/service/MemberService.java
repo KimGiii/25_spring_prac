@@ -3,12 +3,15 @@ package com.kingloo.springpractice.service;
 import com.kingloo.springpractice.domain.Member;
 import com.kingloo.springpractice.repository.MemberRepository;
 import com.kingloo.springpractice.repository.MemoryMemberRepository;
+import jakarta.transaction.Transactional;
+import org.hibernate.annotations.TypeRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @Service
 public class MemberService {
 
