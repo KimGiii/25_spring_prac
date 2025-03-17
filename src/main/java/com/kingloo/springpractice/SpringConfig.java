@@ -1,15 +1,11 @@
 package com.kingloo.springpractice;
 
-import com.kingloo.springpractice.repository.*;
+import com.kingloo.springpractice.aop.TimeTraceAop;
+import com.kingloo.springpractice.repository.MemberRepository;
 import com.kingloo.springpractice.service.MemberService;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
@@ -52,4 +48,5 @@ public class SpringConfig {
 //        // return new JdbcTemplateMemberRepository(dataSource);
 //        return new JpaMemberRepository(em);
 //    }
+
 }

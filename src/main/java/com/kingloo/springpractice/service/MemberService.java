@@ -2,10 +2,9 @@ package com.kingloo.springpractice.service;
 
 import com.kingloo.springpractice.domain.Member;
 import com.kingloo.springpractice.repository.MemberRepository;
-import com.kingloo.springpractice.repository.MemoryMemberRepository;
 import jakarta.transaction.Transactional;
-import org.hibernate.annotations.TypeRegistration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class MemberService {
 
     // DI(Dependency Injection), 생성자 주입
     @Autowired
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(@Qualifier("springDataJpaMemberRepository") MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
@@ -29,20 +28,20 @@ public class MemberService {
     public Long join(Member member) {
         // 같은 이름이 있는 중복 회원 안되는 로직
         validateDuplicateMember(member);
-
         memberRepository.save(member);
         return member.getId();
     }
 
     private void validateDuplicateMember(Member member) {
+
         memberRepository.findByName(member.getName())
-            .ifPresent(m -> {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-            });
+                .ifPresent(m -> {
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
+                });
     }
 
     /**
-     *  전체 회원 조회
+     * 전체 회원 조회
      */
     public List<Member> findMembers() {
         return memberRepository.findAll();
