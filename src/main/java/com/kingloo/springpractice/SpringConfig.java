@@ -1,6 +1,7 @@
 package com.kingloo.springpractice;
 
 import com.kingloo.springpractice.repository.JdbcMemberRepository;
+import com.kingloo.springpractice.repository.JdbcTemplateMemberRepository;
 import com.kingloo.springpractice.repository.MemberRepository;
 import com.kingloo.springpractice.repository.MemoryMemberRepository;
 import com.kingloo.springpractice.service.MemberService;
@@ -30,6 +31,7 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
         //  return new MemoryMemberRepository();
         // 스프링을 쓰는 이유! -> 어셈블리(애플리케이션을 설정하는 코드)만 손대면 다른 코드에 손대지 않아도된다!
-        return new JdbcMemberRepository(dataSource);
+        // return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
